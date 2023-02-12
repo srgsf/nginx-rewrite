@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  web:
+    image: nginx-web
+    build:
+      context: ./web
+    networks:
+      - internal
+    ports:
+      - "80:80"
+
+  backend:
+    image: backend
+    build:
+      context: ./api
+    networks:
+      - internal
+    ports:
+      - "8090:8090"
+networks:
+  internal:
